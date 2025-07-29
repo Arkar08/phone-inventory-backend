@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { deleteCategory, findCategoryName, getCategory, getOneCategory, patchCategory, postCategoy } from "../services/categoryService.js"
+import { deleteCategory, findCategoryName, getOneCategory, patchCategory, postCategoy } from "../services/categoryService.js"
 
 export const postCategoryController = (async (req,res) =>{
     const {name} = req.body;
@@ -39,12 +39,11 @@ export const postCategoryController = (async (req,res) =>{
 
 export const getCategoryController = async(req,res) => {
     try {
-        const findCategory = await getCategory()
         return res.status(200).json({
             status:200,
             message:"Fetch Category Successfully.",
-            length:findCategory.length,
-            data:findCategory
+            length:res.data.data.length,
+            data:res.data.data
         })
     } catch (error) {
           return res.status(500).json({
