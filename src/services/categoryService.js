@@ -1,5 +1,5 @@
 import Category from "../models/categorySchema.js";
-import { generatePagination } from "../utils/generatePagination.js";
+
 
 
 export const postCategoy = async(data) => {
@@ -21,14 +21,6 @@ export const findCategoryName = async(data) => {
         console.log(error,'db category error is')
     }
 }
-
-// export const getCategory = async() => {
-//     try {
-//         const getCategory = await Category.find({})
-//     } catch (error) {
-//         console.log(error,'db category error is')
-//     }
-// }
 
 export const getOneCategory = async(id) => {
     try {
