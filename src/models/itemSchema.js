@@ -7,10 +7,12 @@ const itemSchema = mongoose.Schema({
     },
     category:{
         type:mongoose.Schema.Types.ObjectId,
+        refs:"Category",
         required:true
     },
     company:{
         type:mongoose.Schema.Types.ObjectId,
+        refs:"Company",
         required:true
     },
     price:{
@@ -19,6 +21,7 @@ const itemSchema = mongoose.Schema({
     },
     stock:{
         type:Number,
+        default:0
     },
     color:{
         type:String,
