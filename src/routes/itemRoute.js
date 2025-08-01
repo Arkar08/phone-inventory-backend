@@ -76,6 +76,75 @@ const router = express.Router()
  *         description: A list of Items
  */
 
+/**
+ * @swagger
+ * /items/{id}:
+ *   get:
+ *     summary: Get a single Item by ID
+ *     tags: [Items]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The Item ID
+ *     responses:
+ *       200:
+ *         description: Item data
+ *       404:
+ *         description: Item not found
+ */
+
+/**
+ * @swagger
+ * /items/{id}:
+ *   patch:
+ *     summary: Update a Item by ID
+ *     tags: [Items]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               price:
+ *                 type: number
+ *                 example: 10000
+ *     responses:
+ *       200:
+ *         description: Item updated successfully
+ *       404:
+ *         description: Item not found
+ */
+
+/**
+ * @swagger
+ * /items/{id}:
+ *   delete:
+ *     summary: Delete a Item by ID
+ *     tags: [Items]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Item deleted successfully
+ *       404:
+ *         description: Item not found
+ */
+
+
 
 router.post('/',postItemController)
 router.get('/',generatePagination(Items),getItemController)
