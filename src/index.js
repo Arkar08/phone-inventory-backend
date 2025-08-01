@@ -6,11 +6,13 @@ import itemRoute from './routes/itemRoute.js';
 import purchaseRoute from './routes/purchaseRoute.js';
 import sellRoute from './routes/sellRoute.js';
 import authRoute from './routes/authRoute.js';
+import {swaggerUi,swaggerDocs} from './swagger.js';
 
 dotenv.config();
 
 const app = express()
 app.use(express.json())
+app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(swaggerDocs))
 
 app.get('/',(req,res) => {
     return res.status(200).json('Hello World.')
