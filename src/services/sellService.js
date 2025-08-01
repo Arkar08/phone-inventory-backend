@@ -5,7 +5,7 @@ export const postSell = async(data) => {
     try {
         const findItem = await Items.findById(data.item)
 
-        if(findItem.stock >= data.quantity && findItem.price >= data.sellPrice && findItem.stock !== 0){
+        if(findItem.stock >= data.quantity && findItem.price <= data.sellPrice && findItem.stock !== 0){
             
             await Items.findOneAndUpdate({_id:data.item},{stock:findItem.stock - data.quantity},{new :true})
             const postData = await Sell.create({

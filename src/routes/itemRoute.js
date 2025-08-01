@@ -33,10 +33,10 @@ const router = express.Router()
  *                 example: Remi Note 14
  *               category:
  *                  type: string
- *                  example: 129392939939
+ *                  example: 6888970bfb20c4cef9d8fdbc
  *               company:
  *                  type: string 
- *                  example: 129393
+ *                  example: 6889c0eed4ddaf070ae42d01
  *               price:
  *                  type: number
  *                  example: 1500000

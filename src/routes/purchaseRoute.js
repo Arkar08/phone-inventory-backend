@@ -30,7 +30,7 @@ const router  = express.Router();
  *             properties:
  *               item:
  *                 type: string
- *                 example: 1000q023040
+ *                 example: 688b27e4289157e25b4662c3
  *               quantity:
  *                  type: number
  *                  example: 10
