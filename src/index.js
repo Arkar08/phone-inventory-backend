@@ -8,11 +8,14 @@ import sellRoute from './routes/sellRoute.js';
 import authRoute from './routes/authRoute.js';
 import {swaggerUi,swaggerDocs} from './swagger.js';
 import reportRoute from './routes/reportRoute.js';
+import cors from 'cors'
 
 dotenv.config();
 
 const app = express()
 app.use(express.json())
+
+app.use(cors())
 app.use('/swagger/index.html',swaggerUi.serve,swaggerUi.setup(swaggerDocs))
 
 app.get('/',(req,res) => {
