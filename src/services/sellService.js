@@ -3,6 +3,9 @@ import Sell from "../models/sellSchema.js";
 
 export const postSell = async(data) => {
     try {
+
+        const date = new Date()
+        date.setUTCHours(0,0,0,0)
         const findItem = await Items.findById(data.item)
 
         if(findItem.stock >= data.quantity && findItem.price <= data.sellPrice && findItem.stock !== 0){
@@ -11,7 +14,8 @@ export const postSell = async(data) => {
             const postData = await Sell.create({
                 item:data.item,
                 quantity:data.quantity,
-                sellPrice:data.sellPrice
+                sellPrice:data.sellPrice,
+                sellDate:date
             })
             return postData;
         }else{

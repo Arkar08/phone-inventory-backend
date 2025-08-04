@@ -15,8 +15,7 @@ const sellSchema = mongoose.Schema({
         required:true
     },
     sellDate:{
-        type:Date,
-        default:Date.now()
+        type:Date
     }
 },{timestamps:true})
 

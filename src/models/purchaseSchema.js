@@ -15,8 +15,7 @@ const purchaseSchema = mongoose.Schema({
         required:true
     },
     purchaseDate:{
-        type:Date,
-        default:Date.now()
+        type:Date
     }
 },{timestamps:true})
 

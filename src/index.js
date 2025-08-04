@@ -7,6 +7,7 @@ import purchaseRoute from './routes/purchaseRoute.js';
 import sellRoute from './routes/sellRoute.js';
 import authRoute from './routes/authRoute.js';
 import {swaggerUi,swaggerDocs} from './swagger.js';
+import reportRoute from './routes/reportRoute.js';
 
 dotenv.config();
 
@@ -25,5 +26,6 @@ app.use('/api/v1/company',companyRoute)
 app.use('/api/v1/items',itemRoute)
 app.use('/api/v1/purchase',purchaseRoute)
 app.use('/api/v1/sell',sellRoute)
+app.use('/api/v1/reports',reportRoute)
 
 export default app;
