@@ -115,8 +115,6 @@ export const getSaleReport = async() => {
             delete list.createdAt;
             delete list.updatedAt;
             delete list.price;
-            delete list.option;
-            delete list.color;
             delete list.stock;
             delete list.category;
             return list;
@@ -167,8 +165,6 @@ export const getPurchaseReport = async() => {
             delete list.updatedAt;
             delete list.stock;
             delete list.price;
-            delete list.color;
-            delete list.option;
             delete list.__v;
             delete list.company;
             return list;
