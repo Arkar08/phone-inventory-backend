@@ -1,5 +1,5 @@
 import { getOneItem } from "../services/itemService.js";
-import { getOnePurchase, postPurchase } from "../services/purchaseService.js";
+import { getOnePurchase, postPurchase, returnPurchase } from "../services/purchaseService.js";
 import mongoose from "mongoose";
 
 export const postPurchaseController = async(req,res) => {
@@ -43,11 +43,14 @@ export const postPurchaseController = async(req,res) => {
 
 export const getAllPurchaseController = async(req,res) => {
     try {
+
+        const mainData = res.data.data;
+        const postData = await returnPurchase(mainData)
         return res.status(200).json({
             status:200,
             message:"Fetch Purchase Item Successfully.",
-            length:res.data.data.length,
-            data:res.data.data
+            length:postData.length,
+            data:postData
         })
     } catch (error) {
           return res.status(500).json({

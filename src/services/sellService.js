@@ -34,3 +34,39 @@ export const getOneSell = async(id) => {
         console.log(error, 'Sell db error is')
     }
 }
+
+export const returnSell = async(data) => {
+    try {
+       const findItem = data.map((sell)=> sell.item) 
+       const item = await Items.find({_id:findItem})
+
+        const itemObject = {};
+        const colorObject = {};
+        const optionObject = {};
+        item.forEach((items)=>{
+            itemObject[items._id] = items.itemName
+            colorObject[items._id] = items.color
+            optionObject[items._id] = items.option
+        })
+
+        const postData = data.map((sell)=>{
+            const itemName = itemObject[sell.item] || 'Unknown';
+            const colorName = colorObject[sell.item] || '_';
+            const optionName = optionObject[sell.item] || '_';
+            const list = {
+                ...sell.toObject(),
+                item:itemName,
+                color:colorName,
+                option:optionName
+            }
+            delete list.__v;
+            delete list.createdAt;
+            delete list.updatedAt;
+            return list;
+        })
+        return postData;
+
+    } catch (error) {
+        console.log(error, 'Sell db error is')
+    }
+}

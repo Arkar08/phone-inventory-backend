@@ -1,5 +1,5 @@
 import { getOneItem } from "../services/itemService.js";
-import { getOneSell, postSell } from "../services/sellService.js";
+import { getOneSell, postSell, returnSell } from "../services/sellService.js";
 import mongoose from "mongoose";
 
 export const postSellController = async (req, res) => {
@@ -48,11 +48,14 @@ export const postSellController = async (req, res) => {
 
 export const getAllSellController = async(req,res) => {
     try {
+
+        const mainData = res.data.data;
+        const postData = await returnSell(mainData)
         return res.status(200).json({
             status:200,
             message:"Fetch Sell Item Successfully.",
-            length:res.data.data.length,
-            data:res.data.data
+            length:postData.length,
+            data:postData
         })
     } catch (error) {
           return res.status(500).json({

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { getOneCategory } from "../services/categoryService.js";
 import { getOneCompany } from "../services/companyService.js";
-import { deleteOneItem, findItemName, getOneItem, postItems, updateOneItem } from "../services/itemService.js";
+import { deleteOneItem, findItemName, getOneItem, postItems, returnItemList, updateOneItem } from "../services/itemService.js";
 
 export const postItemController = async(req,res) => {
     const {itemName,category,company,price,color,option} = req.body;
@@ -49,11 +49,14 @@ export const postItemController = async(req,res) => {
 
 export const getItemController = async(req,res) => {
     try {
+
+        const mainData = res.data.data
+        const postData = await returnItemList(mainData)
         return res.status(200).json({
             status:200,
             message:"Fetch Item Successfully.",
-            length:res.data.data.length,
-            data:res.data.data
+            length:postData.length,
+            data:postData
         })
     } catch (error) {
           return res.status(500).json({
